@@ -1,0 +1,33 @@
+<%- include("partials/header.ejs") %>
+
+<% if(array && array.length > 0){ %>
+    <div id="postsArrayContainer">
+        <% array.forEach(function(post) { %>
+            <div class="myContainer" id="homeContainerWPost">
+                <div id="postForm">
+                    <label name="postTitle"><h1><%= post.postTitle %></h1></label>
+                    <label name="postContent"><p><%= post.postContent %></p></label>
+                    
+                    <div class="d-flex gap-2 justify-content-end">
+                        <form action="/edit" method="POST">
+                            <input type="hidden" name="postId" value="<%= post.id %>">
+                            <button class="btn btn-outline-success" type="submit"> Edit </button>
+                        </form>
+                        <form action="/delete" method="POST">
+                            <input type="hidden" name="postId" value="<%= post.id %>">
+                            <button class="btn btn-outline-danger" type="submit"> Delete </button>
+                        </form>
+                    </div>
+                    
+                </div>
+            </div> 
+        <% }) %>
+    </div>
+<% } else { %>
+    <div class="myContainer" id="homeContainer">
+        <h1>Welcome to Paloma's personal blog website! &#127872;</h1>
+        <p>“What you do after you create your content is what truly counts.” - <cite>Gary Vaynerchuk</cite></p>
+    </div>
+<% } %>
+
+<%- include("partials/footer.ejs") %>

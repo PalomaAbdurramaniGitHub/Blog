@@ -1,0 +1,34 @@
+<%- include("partials/header.ejs") %>
+
+<div class="myContainer">
+    <% if(locals.postId >= 0){ %>
+        <form id="createForm" action="/update" method="POST">
+            <h3>Edit your post &#128071;</h3>
+            <input type="hidden" name="postId" value="<%= postId %>">
+            <div class="input">
+                <label><h5>Post Title</h5></label>
+                <input type="text" name="title" value="<%= postTitle %>"> 
+            </div>
+            <div class="input">
+                <label><h5>Post Content</h5></label>
+                <input type="text" name="content" value="<%= postContent %>"> 
+            </div>
+            <button>Update &#127758;</button>
+        </form>
+    <% } else { %>
+        <form id="createForm" action="/post" method="POST">
+            <h3>Create a new post below &#128071;</h3>
+            <div class="input">
+                <label><h5>Post Title</h5></label>
+                <input type="text" name="title" placeholder="Title...">
+            </div>
+            <div class="input">
+                <label><h5>Post Content</h5></label>
+                <input type="text" name="content" placeholder="Your thoughts...">
+            </div>
+            <button>Post &#127758;</button>
+        </form>
+    <% } %>
+</div>
+
+<%- include("partials/footer.ejs") %>   
